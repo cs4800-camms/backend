@@ -16,6 +16,11 @@ public class GreetingController {
         return new Greeting(counter.incrementAndGet(), String.format(template, name));
     }
 
+    @GetMapping("/trip")
+    public Trip getTrip(@RequestParam(value = "destination", defaultValue = "United States") String destination) {
+        return new Trip(counter.incrementAndGet(), "Trip"+counter.get(), destination);
+    }
+
     @GetMapping("/bye")
     public String bye(){
         return "Good bye!";
@@ -24,11 +29,6 @@ public class GreetingController {
     @GetMapping("/vampire")
     public String vampire(){
         return "say it...out loud...vampire";
-    }
-
-    @GetMapping("/hello")
-    public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
-        return "Hello!";
     }
 
     @GetMapping("/dog")
