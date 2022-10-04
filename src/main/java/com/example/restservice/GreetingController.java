@@ -10,10 +10,21 @@ public class GreetingController {
 
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
+    private Trip sampleTrip = new Trip(counter.incrementAndGet(), "Summer Trip", "Japan & Philippines");
 
     @GetMapping("/greeting")
     public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
         return new Greeting(counter.incrementAndGet(), String.format(template, name));
+    }
+
+    @GetMapping("/trip")
+    public Trip trip(@RequestParam(value = "destination", defaultValue = "United States") String destination) {
+        return new Trip(counter.incrementAndGet(), "Trip"+counter.get(), destination);
+    }
+
+    @GetMapping("/gettrip")
+    public String getTrip() {
+        return sampleTrip.getName() + "'s destinations are " + sampleTrip.getDestination();
     }
 
     @GetMapping("/bye")
@@ -21,9 +32,9 @@ public class GreetingController {
         return "Good bye!";
     }
 
-    @GetMapping("/hello")
-    public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
-        return "Hello!";
+    @GetMapping("/vampire")
+    public String vampire(){
+        return "say it...out loud...vampire";
     }
 
     @GetMapping("/dog")
