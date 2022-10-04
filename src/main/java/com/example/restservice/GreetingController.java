@@ -21,8 +21,19 @@ public class GreetingController {
         return "Good bye!";
     }
 
+    @GetMapping("/vampire")
+    public String vampire(){
+        return "say it...out loud...vampire";
+    }
+
     @GetMapping("/hello")
     public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
         return "Hello!";
     }
+
+    @GetMapping("/dog")
+    public String dog(){
+        return "This is a normal dog:D ";
+    }
+
 }
