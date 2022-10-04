@@ -25,9 +25,5 @@ public class GreetingController {
     public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
         return "Hello!";
     }
-
-    @GetMapping("/cat")
-    public String cat(){
-        return "This is a cat :D";
-    }
+    
 }
