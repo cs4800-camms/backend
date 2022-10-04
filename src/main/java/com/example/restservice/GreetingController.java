@@ -30,4 +30,10 @@ public class GreetingController {
     public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
         return "Hello!";
     }
+
+    @GetMapping("/dog")
+    public String dog(){
+        return "This is a normal dog:D ";
+    }
+
 }
