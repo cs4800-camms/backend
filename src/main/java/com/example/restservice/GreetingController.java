@@ -4,7 +4,7 @@ import java.util.concurrent.atomic.AtomicLong;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.apache.commons.io.FilenameUtils;
 @RestController
 public class GreetingController {
 
@@ -35,5 +35,15 @@ public class GreetingController {
     public String dog(){
         return "This is a normal dog:D ";
     }
+
+    @GetMapping("/commons")
+    //normalizes a filename by removing double dot segments
+    public String commons() {
+        String filename = "C:/commons/io/../lang/trippytravel.html";
+        String normalized = FilenameUtils.normalize(filename);
+        return normalized;
+
+    }
+
 
 }
