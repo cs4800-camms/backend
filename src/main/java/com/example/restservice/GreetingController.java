@@ -1,8 +1,10 @@
 package com.example.restservice;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicLong;
 
+import com.google.common.base.Joiner;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -63,6 +65,11 @@ public class GreetingController {
         String title = doc.title();
         return title;
 
+    }
+
+    @GetMapping("/gguava")
+    public String gguava() {
+        return Joiner.on(" ").join(Arrays.asList("May", "7", "2022"));
     }
 
 
