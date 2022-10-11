@@ -1,7 +1,7 @@
-package com.example.restservice;
+package com.samm.trippytravel;
 
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class GreetingControllerTest {
+public class TripControllerTest {
 }
