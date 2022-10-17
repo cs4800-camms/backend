@@ -2,6 +2,7 @@ package com.samm.trippytravel.controllers;
 
 import com.samm.trippytravel.data.domain.Trip;
 import com.samm.trippytravel.data.requests.CreateTripRequest;
+import com.samm.trippytravel.data.requests.UpdateTripRequest;
 import com.samm.trippytravel.repository.TripRepository;
 import com.samm.trippytravel.services.TripService;
 import lombok.RequiredArgsConstructor;
@@ -42,4 +43,10 @@ public class TripController {
         tripRepository.deleteAll();
     }
 
+    @PostMapping("/update")
+    @ResponseBody
+    public ResponseEntity<Trip> updateTrip(
+            @RequestBody UpdateTripRequest updateTripRequest) {
+        return new ResponseEntity<>(tripService.updateTrip(updateTripRequest), HttpStatus.OK);
+    }
 }

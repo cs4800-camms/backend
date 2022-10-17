@@ -2,6 +2,7 @@ package com.samm.trippytravel.data.domain;
 
 import lombok.Builder;
 import lombok.Value;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Value
@@ -9,6 +10,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document("trip")
 public class Trip {
 
+    @Id
+    String _id;
     long userId;
     String name;
     String destination;
