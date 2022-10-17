@@ -13,10 +13,6 @@ import javax.validation.constraints.NotBlank;
 public class UpdateTripRequest {
 
     @NotBlank
-    @JsonProperty("id")
-    private final String _id;
-
-    @NotBlank
     @JsonProperty("userId")
     private final long userId;
 

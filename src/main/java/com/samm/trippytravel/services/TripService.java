@@ -25,9 +25,9 @@ public class TripService {
                 .build());
     }
 
-    public Trip updateTrip(UpdateTripRequest updateTripRequest) {
+    public Trip updateTrip(String idNumber, UpdateTripRequest updateTripRequest) {
         return tripRepository.save(Trip.builder()
-                ._id(updateTripRequest.get_id())
+                ._id(idNumber)
                 .userId(updateTripRequest.getUserId())
                 .name(updateTripRequest.getName())
                 .destination(updateTripRequest.getDestination())

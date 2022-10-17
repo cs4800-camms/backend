@@ -39,16 +39,17 @@ public class TripController {
         return new ResponseEntity<>(tripService.addTrip(createTripRequest), HttpStatus.OK);
     }
 
-    @PostMapping("/update")
+    @PostMapping("{tripIdNumber}/update")
     @ResponseBody
     public ResponseEntity<Trip> updateTrip(
+            @PathVariable("tripIdNumber") String tripIdNumber,
             @RequestBody UpdateTripRequest updateTripRequest) {
-        return new ResponseEntity<>(tripService.updateTrip(updateTripRequest), HttpStatus.OK);
+        return new ResponseEntity<>(tripService.updateTrip(tripIdNumber, updateTripRequest), HttpStatus.OK);
     }
 
-    @DeleteMapping("{idNumber}/delete")
+    @DeleteMapping("{tripIdNumber}/delete")
     @ResponseBody
-    public ResponseEntity<Trip> deleteTrip(@PathVariable("idNumber") String idNumber) {
-        return new ResponseEntity<>(tripRepository.deleteById(idNumber), HttpStatus.OK);
+    public ResponseEntity<Trip> deleteTrip(@PathVariable("tripIdNumber") String tripIdNumber) {
+        return new ResponseEntity<>(tripRepository.deleteById(tripIdNumber), HttpStatus.OK);
     }
 }
