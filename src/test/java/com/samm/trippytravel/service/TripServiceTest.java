@@ -64,7 +64,7 @@ public class TripServiceTest {
     }
 
     @Test
-    void updateTrip() {;
+    void updateTrip() {
         tripService.updateTrip(updateTrip.get_id(), updateTripRequest);
         Trip updatedTrip = Trip.builder()
                 ._id(id)
