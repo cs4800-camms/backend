@@ -1,7 +1,7 @@
-package com.samm.trippytravel;
+package com.samm.trippytravel.repo;
 
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class TripControllerTest {
+public class TripRepositoryTest {
 }
