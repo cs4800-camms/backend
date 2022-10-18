@@ -1,5 +1,6 @@
 package com.samm.trippytravel.service;
 
+import com.samm.trippytravel.data.requests.CreateTripRequest;
 import com.samm.trippytravel.repository.TripRepository;
 import com.samm.trippytravel.services.TripService;
 import org.junit.jupiter.api.BeforeEach;
