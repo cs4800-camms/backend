@@ -2,6 +2,7 @@ package com.samm.trippytravel.repo;
 
 import com.samm.trippytravel.data.domain.Trip;
 import com.samm.trippytravel.repository.TripRepository;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,16 +17,19 @@ public class TripRepositoryTest {
     @Mock
     private TripRepository tripRepository;
 
-    @Test
-    void isTripAdded() {
-        Trip trip = Trip.builder()
+    private Trip addedTrip;
+
+    @BeforeEach
+    void setUp() {
+        this.addedTrip = tripRepository.insert(Trip.builder()
                 .userId(1)
                 .name("Family Trip")
                 .destination("Tokyo, Japan")
-                .build();
+                .build());
+    }
 
-        Trip addedTrip = tripRepository.insert(trip);
-
+    @Test
+    void isTripAdded() {
         assertThat(Trip.builder()
                 ._id(addedTrip.get_id())
                 .userId(addedTrip.getUserId())
@@ -33,5 +37,11 @@ public class TripRepositoryTest {
                 .destination(addedTrip.getDestination())
                 .build())
                 .isEqualTo(addedTrip);
+    }
+
+    @Test
+    void isTripDeleted() {
+        Trip deletedTrip = tripRepository.deleteById(addedTrip.get_id());
+        assertThat(addedTrip).isEqualTo(deletedTrip);
     }
 }
