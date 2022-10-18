@@ -1,5 +1,6 @@
 package com.samm.trippytravel.service;
 
+import com.samm.trippytravel.data.domain.Trip;
 import com.samm.trippytravel.data.requests.CreateTripRequest;
 import com.samm.trippytravel.repository.TripRepository;
 import com.samm.trippytravel.services.TripService;
@@ -18,14 +19,34 @@ public class TripServiceTest {
 
     private TripService tripService;
 
+    private CreateTripRequest createTripRequest;
+
+    private Trip trip;
+
     @BeforeEach
     void setUp() {
         this.tripService = new TripService(this.tripRepository);
+        this.createTripRequest= CreateTripRequest.builder()
+                .userId(3)
+                .name("Mary")
+                .destination("Rome")
+                .build();
+        this.trip = Trip.builder()
+                .userId(3)
+                .name("Mary")
+                .destination("Rome")
+                .build();
     }
 
     @Test
     void getTrips() {
         tripService.getTrips();
         verify(tripRepository).findAll();
+    }
+
+    @Test
+    void addTrip() {
+        tripService.addTrip(createTripRequest);
+        verify(tripRepository).insert(trip);
     }
 }
