@@ -5,25 +5,34 @@ import com.samm.trippytravel.data.requests.CreateTripRequest;
 import com.samm.trippytravel.data.requests.UpdateTripRequest;
 import com.samm.trippytravel.repository.TripRepository;
 import com.samm.trippytravel.services.TripService;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @SpringBootTest
+@Slf4j
+@ExtendWith(MockitoExtension.class)
 public class TripServiceTest {
 
     @Mock
     private TripRepository tripRepository;
+    @Mock
     private TripService tripService;
     private CreateTripRequest createTripRequest;
-
     private Trip trip;
-    private Trip updateTrip;
     private UpdateTripRequest updateTripRequest;
-    private String id ="abcdefg";
+
+    private final String ID ="abcdefg";
 
     @BeforeEach
     void setUp() {
@@ -34,12 +43,7 @@ public class TripServiceTest {
                 .destination("Rome")
                 .build();
         this.trip = Trip.builder()
-                .userId(3)
-                .name("Mary")
-                .destination("Rome")
-                .build();
-        this.updateTrip = Trip.builder()
-                ._id(id)
+                ._id(ID)
                 .userId(4)
                 .name("Mel")
                 .destination("Japan")
@@ -47,32 +51,50 @@ public class TripServiceTest {
         this.updateTripRequest = UpdateTripRequest.builder()
                 .userId(4)
                 .name("Mel T.")
-                .destination("Taipe")
+                .destination("Taipei")
                 .build();
     }
 
     @Test
     void getTrips() {
-        tripService.getTrips();
+        when(tripService.getTrips()).thenReturn(List.of(trip));
+        List<Trip> listOfTrips = tripService.getTrips();
+
         verify(tripRepository).findAll();
+        assertThat(listOfTrips.get(0)).isEqualTo(trip);
     }
 
     @Test
     void addTrip() {
-        tripService.addTrip(createTripRequest);
-        verify(tripRepository).insert(trip);
+        when(tripService.addTrip(createTripRequest))
+                .thenReturn(Trip.builder()
+                    .userId(3)
+                    .name("Mary")
+                    .destination("Rome")
+                    .build());
+        Trip addedTrip = tripService.addTrip(createTripRequest);
+
+        log.info("addedTrip: " + addedTrip.toString());
+        verify(tripRepository).insert(addedTrip);
+        assertThat(createTripRequest.getUserId()).isEqualTo(addedTrip.getUserId());
+        assertThat(createTripRequest.getDestination()).isEqualTo(addedTrip.getDestination());
+        assertThat(createTripRequest.getName()).isEqualTo(addedTrip.getName());
     }
 
     @Test
     void updateTrip() {
-        tripService.updateTrip(updateTrip.get_id(), updateTripRequest);
-        Trip updatedTrip = Trip.builder()
-                ._id(id)
-                .userId(4)
-                .name("Mel T.")
-                .destination("Taipe")
-                .build();
-        verify(tripRepository).save(updatedTrip);
-    }
+        when(tripService.updateTrip(trip.get_id(), updateTripRequest))
+                .thenReturn(Trip.builder()
+                        ._id(ID)
+                        .userId(4)
+                        .name("Mel T.")
+                        .destination("Taipei")
+                        .build());
+        Trip updatedTrip = tripService.updateTrip(trip.get_id(), updateTripRequest);
 
+        log.info("updatedTrip: " + updatedTrip.toString());
+        verify(tripRepository).save(updatedTrip);
+        assertThat(updateTripRequest.getDestination()).isEqualTo(updatedTrip.getDestination());
+        assertThat(updateTripRequest.getName()).isEqualTo(updatedTrip.getName());
+    }
 }
