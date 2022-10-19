@@ -53,7 +53,7 @@ public class TripController {
         return new ResponseEntity<>(tripRepository.deleteById(tripIdNumber), HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete")
+    @DeleteMapping("/delete-all")
     public void delete() {
         tripRepository.deleteAll();
     }
