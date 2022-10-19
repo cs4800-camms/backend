@@ -52,4 +52,9 @@ public class TripController {
     public ResponseEntity<Trip> deleteTrip(@PathVariable("tripIdNumber") String tripIdNumber) {
         return new ResponseEntity<>(tripRepository.deleteById(tripIdNumber), HttpStatus.OK);
     }
+
+    @DeleteMapping("/delete-all")
+    public void delete() {
+        tripRepository.deleteAll();
+    }
 }
