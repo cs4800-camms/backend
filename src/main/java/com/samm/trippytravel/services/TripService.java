@@ -14,6 +14,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class TripService {
+
     private final TripRepository tripRepository;
 
     public Trip addTrip(CreateTripRequest createTripRequest) {
@@ -21,8 +22,6 @@ public class TripService {
                 .userId(createTripRequest.getUserId())
                 .name(createTripRequest.getName())
                 .destination(createTripRequest.getDestination())
-                .startDate(createTripRequest.getStartDate())
-                .endDate(createTripRequest.getEndDate())
                 .build());
     }
 
@@ -32,8 +31,6 @@ public class TripService {
                 .userId(updateTripRequest.getUserId())
                 .name(updateTripRequest.getName())
                 .destination(updateTripRequest.getDestination())
-                .startDate(updateTripRequest.getStartDate())
-                .endDate(updateTripRequest.getEndDate())
                 .build());
     }
 

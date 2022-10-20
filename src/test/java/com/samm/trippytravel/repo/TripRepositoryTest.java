@@ -11,9 +11,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.Calendar;
-import java.util.Date;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
@@ -21,6 +18,7 @@ import static org.mockito.Mockito.when;
 @Slf4j
 @ExtendWith(MockitoExtension.class)
 public class TripRepositoryTest {
+
     @Autowired
     @Mock
     private TripRepository tripRepository;
@@ -31,8 +29,6 @@ public class TripRepositoryTest {
     private final long USER_ID = 1;
     private final String NAME = "Family Trip";
     private final String DESTINATION = "Tokyo, Japan";
-    private final Date START = new Date(2022, Calendar.NOVEMBER, 21);
-    private final Date END = new Date(2022, Calendar.NOVEMBER, 25);
 
     @BeforeEach
     void setUp() {
@@ -41,8 +37,6 @@ public class TripRepositoryTest {
                 .userId(USER_ID)
                 .name(NAME)
                 .destination(DESTINATION)
-                .startDate(START)
-                .endDate(END)
                 .build();
 
         when(tripRepository.insert(trip)).thenReturn(Trip.builder()
@@ -50,8 +44,6 @@ public class TripRepositoryTest {
                                 .userId(USER_ID)
                                 .name(NAME)
                                 .destination(DESTINATION)
-                                .startDate(START)
-                                .endDate(END)
                                 .build());
         this.addedTrip = this.tripRepository.insert(trip);
     }
@@ -69,8 +61,6 @@ public class TripRepositoryTest {
                 .userId(USER_ID)
                 .name(NAME)
                 .destination(DESTINATION)
-                .startDate(START)
-                .endDate(END)
                 .build());
         Trip deletedTrip = this.tripRepository.deleteById(ID);
 

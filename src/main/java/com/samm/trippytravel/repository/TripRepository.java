@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TripRepository extends MongoRepository<Trip, Long> {
+
     @Query(value="{'_id' : ?0}", delete = true)
     Trip deleteById(String id);
 }
