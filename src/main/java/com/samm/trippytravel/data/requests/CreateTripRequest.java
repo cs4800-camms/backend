@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 
 import javax.validation.constraints.NotBlank;
+import java.util.Date;
 
 @Builder
 @Getter
@@ -23,5 +24,13 @@ public class CreateTripRequest {
     @NotBlank
     @JsonProperty("destination")
     private final String destination;
+
+    @NotBlank
+    @JsonProperty("startDate")
+    private final Date startDate;
+
+    @NotBlank
+    @JsonProperty("endDate")
+    private final Date endDate;
 
 }
