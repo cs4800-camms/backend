@@ -12,7 +12,6 @@ import java.util.Date;
 @Getter
 @AllArgsConstructor
 public class CreateTripRequest {
-
     @NotBlank
     @JsonProperty("userId")
     private final long userId;
@@ -32,5 +31,4 @@ public class CreateTripRequest {
     @NotBlank
     @JsonProperty("endDate")
     private final Date endDate;
-
 }

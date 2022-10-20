@@ -25,7 +25,6 @@ import static org.mockito.Mockito.when;
 @Slf4j
 @ExtendWith(MockitoExtension.class)
 public class TripServiceTest {
-
     @Mock
     private TripRepository tripRepository;
     @Mock
@@ -34,14 +33,14 @@ public class TripServiceTest {
     private Trip trip;
     private UpdateTripRequest updateTripRequest;
 
-    private final String ID ="abcdefg";
+    private final String ID = "abcdefg";
     private final Date START = new Date(2022, Calendar.NOVEMBER, 21);
     private final Date END = new Date(2022, Calendar.NOVEMBER, 25);
 
     @BeforeEach
     void setUp() {
         this.tripService = new TripService(this.tripRepository);
-        this.createTripRequest= CreateTripRequest.builder()
+        this.createTripRequest = CreateTripRequest.builder()
                 .userId(3)
                 .name("Mary")
                 .destination("Rome")

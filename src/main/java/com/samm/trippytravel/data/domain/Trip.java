@@ -11,7 +11,6 @@ import java.util.Date;
 @Builder
 @Document("trip")
 public class Trip {
-
     @Id
     String _id;
     long userId;
@@ -29,5 +28,4 @@ public class Trip {
                 .endDate(trip.getEndDate())
                 .build();
     }
-
 }

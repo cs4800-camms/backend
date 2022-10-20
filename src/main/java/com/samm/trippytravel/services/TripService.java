@@ -14,7 +14,6 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class TripService {
-
     private final TripRepository tripRepository;
 
     public Trip addTrip(CreateTripRequest createTripRequest) {

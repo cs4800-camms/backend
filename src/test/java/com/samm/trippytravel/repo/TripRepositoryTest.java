@@ -21,7 +21,6 @@ import static org.mockito.Mockito.when;
 @Slf4j
 @ExtendWith(MockitoExtension.class)
 public class TripRepositoryTest {
-
     @Autowired
     @Mock
     private TripRepository tripRepository;
