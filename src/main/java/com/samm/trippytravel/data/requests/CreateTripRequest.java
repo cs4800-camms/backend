@@ -17,11 +17,11 @@ public class CreateTripRequest {
     private final long userId;
 
     @NotBlank
-    @JsonProperty("tripName")
+    @JsonProperty("name")
     private final String name;
 
     @NotBlank
-    @JsonProperty("tripDestination")
+    @JsonProperty("destination")
     private final String destination;
 
     @NotBlank
