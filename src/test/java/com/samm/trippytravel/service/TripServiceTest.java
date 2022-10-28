@@ -1,8 +1,8 @@
 package com.samm.trippytravel.service;
 
 import com.samm.trippytravel.data.domain.Trip;
-import com.samm.trippytravel.data.requests.CreateTripRequest;
-import com.samm.trippytravel.data.requests.UpdateTripRequest;
+import com.samm.trippytravel.data.requests.trip.CreateTripRequest;
+import com.samm.trippytravel.data.requests.trip.UpdateTripRequest;
 import com.samm.trippytravel.repository.TripRepository;
 import com.samm.trippytravel.services.TripService;
 import lombok.extern.slf4j.Slf4j;

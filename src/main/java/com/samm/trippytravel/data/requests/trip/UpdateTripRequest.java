@@ -1,4 +1,4 @@
-package com.samm.trippytravel.data.requests;
+package com.samm.trippytravel.data.requests.trip;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
