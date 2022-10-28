@@ -1,6 +1,7 @@
 package com.samm.trippytravel.controllers;
 
 import com.samm.trippytravel.data.requests.activity.CreateActivityRequest;
+import com.samm.trippytravel.data.requests.activity.UpdateActivityRequest;
 import com.samm.trippytravel.data.response.activity.ActivityResponse;
 import com.samm.trippytravel.repository.ActivityRepository;
 import com.samm.trippytravel.services.ActivityService;
@@ -45,6 +46,14 @@ public class ActivityController {
     public ResponseEntity<ActivityResponse> deleteActivity(
             @PathVariable("activityIdNumber") String activityIdNumber) {
         return new ResponseEntity<>(activityService.deleteActivity(activityIdNumber), HttpStatus.OK);
+    }
+
+    @PostMapping("{activityIdNumber}/update")
+    @ResponseBody
+    public ResponseEntity<ActivityResponse> updateActivity(
+            @PathVariable("activityIdNumber") String activityIdNumber,
+            @RequestBody UpdateActivityRequest updateActivityRequest) {
+        return new ResponseEntity<>(activityService.updateActivity(activityIdNumber, updateActivityRequest), HttpStatus.OK);
     }
 
     @DeleteMapping("/delete-all")

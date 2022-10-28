@@ -2,6 +2,7 @@ package com.samm.trippytravel.services;
 
 import com.samm.trippytravel.data.domain.Activity;
 import com.samm.trippytravel.data.requests.activity.CreateActivityRequest;
+import com.samm.trippytravel.data.requests.activity.UpdateActivityRequest;
 import com.samm.trippytravel.data.response.activity.ActivityResponse;
 import com.samm.trippytravel.repository.ActivityRepository;
 import lombok.RequiredArgsConstructor;
@@ -32,6 +33,16 @@ public class ActivityService {
 
     public ActivityResponse deleteActivity(String activityIdNumber) {
         return toActivityResponse(activityRepository.deleteById(activityIdNumber));
+    }
+
+    public ActivityResponse updateActivity(String activityIdNumber, UpdateActivityRequest updateActivityRequest) {
+        return toActivityResponse(activityRepository.save(Activity.builder()
+                ._id(activityIdNumber)
+                .day_id(updateActivityRequest.getDay_id())
+                .checked(updateActivityRequest.isChecked())
+                .name(updateActivityRequest.getName())
+                .location(updateActivityRequest.getLocation())
+                .build()));
     }
 
     private ActivityResponse toActivityResponse(Activity activity) {
