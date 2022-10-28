@@ -8,6 +8,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
+import static java.util.stream.Collectors.toList;
+
 @Service
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class DayService {
@@ -21,6 +25,10 @@ public class DayService {
                 .build()));
     }
 
+    public List<DayResponse> getDaysForTrip(String tripIdNumber) {
+        return toListDayResponse(dayRepository.getDaysByTripId(tripIdNumber));
+    }
+
     private DayResponse toDayResponse(Day day) {
         return DayResponse.builder()
                 ._id(day.get_id())
@@ -28,5 +36,11 @@ public class DayService {
                 .name(day.getName())
                 .date(day.getDate())
                 .build();
+    }
+
+    private List<DayResponse> toListDayResponse(List<Day> dayList) {
+        return dayList.stream()
+                .map(this::toDayResponse)
+                .collect(toList());
     }
 }
