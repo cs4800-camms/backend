@@ -8,6 +8,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
+import static java.util.stream.Collectors.toList;
+
 @Service
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class ActivityService {
@@ -22,6 +26,10 @@ public class ActivityService {
                 .build()));
     }
 
+    public List<ActivityResponse> getActivitiesForDay(String dayIdNumber) {
+        return toListActivityResponse(activityRepository.getActivitiesByDayId(dayIdNumber));
+    }
+
     private ActivityResponse toActivityResponse(Activity activity) {
         return ActivityResponse.builder()
                 ._id(activity.get_id())
@@ -30,5 +38,11 @@ public class ActivityService {
                 .name(activity.getName())
                 .location(activity.getLocation())
                 .build();
+    }
+
+    private List<ActivityResponse> toListActivityResponse(List<Activity> activityList) {
+        return activityList.stream()
+                .map(this::toActivityResponse)
+                .collect(toList());
     }
 }
