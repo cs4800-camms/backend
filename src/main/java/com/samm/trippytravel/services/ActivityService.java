@@ -3,7 +3,7 @@ package com.samm.trippytravel.services;
 import com.samm.trippytravel.data.domain.Activity;
 import com.samm.trippytravel.data.requests.activity.CreateActivityRequest;
 import com.samm.trippytravel.data.requests.activity.UpdateActivityRequest;
-import com.samm.trippytravel.data.response.activity.ActivityResponse;
+import com.samm.trippytravel.data.response.ActivityResponse;
 import com.samm.trippytravel.repository.ActivityRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

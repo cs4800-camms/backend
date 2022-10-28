@@ -2,7 +2,7 @@ package com.samm.trippytravel.controllers;
 
 import com.samm.trippytravel.data.requests.day.CreateDayRequest;
 import com.samm.trippytravel.data.requests.day.UpdateDayRequest;
-import com.samm.trippytravel.data.response.day.DayResponse;
+import com.samm.trippytravel.data.response.DayResponse;
 import com.samm.trippytravel.repository.DayRepository;
 import com.samm.trippytravel.services.DayService;
 import lombok.RequiredArgsConstructor;

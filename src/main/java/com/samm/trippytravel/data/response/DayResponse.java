@@ -1,4 +1,4 @@
-package com.samm.trippytravel.data.response.day;
+package com.samm.trippytravel.data.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
