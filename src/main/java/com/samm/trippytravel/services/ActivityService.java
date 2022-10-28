@@ -30,6 +30,10 @@ public class ActivityService {
         return toListActivityResponse(activityRepository.getActivitiesByDayId(dayIdNumber));
     }
 
+    public ActivityResponse deleteActivity(String activityIdNumber) {
+        return toActivityResponse(activityRepository.deleteById(activityIdNumber));
+    }
+
     private ActivityResponse toActivityResponse(Activity activity) {
         return ActivityResponse.builder()
                 ._id(activity.get_id())

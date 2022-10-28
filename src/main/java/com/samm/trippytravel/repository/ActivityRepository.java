@@ -11,4 +11,7 @@ import java.util.List;
 public interface ActivityRepository extends MongoRepository<Activity, Long> {
     @Query(value="{ 'day_id' : ObjectId( ?0 )}")
     List<Activity> getActivitiesByDayId(String dayId);
+
+    @Query(value="{'_id' : ?0}", delete = true)
+    Activity deleteById(String id);
 }

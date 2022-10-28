@@ -40,6 +40,13 @@ public class ActivityController {
         return new ResponseEntity<>(activityService.getActivitiesForDay(dayIdNumber), HttpStatus.OK);
     }
 
+    @DeleteMapping("{activityIdNumber}")
+    @ResponseBody
+    public ResponseEntity<ActivityResponse> deleteActivity(
+            @PathVariable("activityIdNumber") String activityIdNumber) {
+        return new ResponseEntity<>(activityService.deleteActivity(activityIdNumber), HttpStatus.OK);
+    }
+
     @DeleteMapping("/delete-all")
     public void delete() {
         activityRepository.deleteAll();
