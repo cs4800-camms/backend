@@ -2,6 +2,7 @@ package com.samm.trippytravel.services;
 
 import com.samm.trippytravel.data.domain.Day;
 import com.samm.trippytravel.data.requests.day.CreateDayRequest;
+import com.samm.trippytravel.data.requests.day.UpdateDayRequest;
 import com.samm.trippytravel.data.response.day.DayResponse;
 import com.samm.trippytravel.repository.DayRepository;
 import lombok.RequiredArgsConstructor;
@@ -31,6 +32,15 @@ public class DayService {
 
     public DayResponse deleteDay(String dayIdNumber) {
         return toDayResponse(dayRepository.deleteById(dayIdNumber));
+    }
+
+    public DayResponse updateDay(String dayIdNumber, UpdateDayRequest updateDayRequest) {
+        return toDayResponse(dayRepository.save(Day.builder()
+                ._id(dayIdNumber)
+                .trip_id(updateDayRequest.getTrip_id())
+                .name(updateDayRequest.getName())
+                .date(updateDayRequest.getDate())
+                .build()));
     }
 
     private DayResponse toDayResponse(Day day) {

@@ -1,6 +1,7 @@
 package com.samm.trippytravel.controllers;
 
 import com.samm.trippytravel.data.requests.day.CreateDayRequest;
+import com.samm.trippytravel.data.requests.day.UpdateDayRequest;
 import com.samm.trippytravel.data.response.day.DayResponse;
 import com.samm.trippytravel.repository.DayRepository;
 import com.samm.trippytravel.services.DayService;
@@ -45,6 +46,14 @@ public class DayController {
     public ResponseEntity<DayResponse> deleteDay(
             @PathVariable("dayIdNumber") String dayIdNumber) {
         return new ResponseEntity<>(dayService.deleteDay(dayIdNumber), HttpStatus.OK);
+    }
+
+    @PostMapping("{dayIdNumber}/update")
+    @ResponseBody
+    public ResponseEntity<DayResponse> updateDay(
+            @PathVariable("dayIdNumber") String dayIdNumber,
+            @RequestBody UpdateDayRequest updateDayRequest) {
+        return new ResponseEntity<>(dayService.updateDay(dayIdNumber, updateDayRequest), HttpStatus.OK);
     }
 
     @DeleteMapping("/delete-all")
