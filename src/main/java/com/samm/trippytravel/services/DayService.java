@@ -29,6 +29,10 @@ public class DayService {
         return toListDayResponse(dayRepository.getDaysByTripId(tripIdNumber));
     }
 
+    public DayResponse deleteDay(String dayIdNumber) {
+        return toDayResponse(dayRepository.deleteById(dayIdNumber));
+    }
+
     private DayResponse toDayResponse(Day day) {
         return DayResponse.builder()
                 ._id(day.get_id())
