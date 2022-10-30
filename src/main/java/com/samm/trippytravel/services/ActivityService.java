@@ -20,6 +20,7 @@ public class ActivityService {
 
     public ActivityResponse addActivity(CreateActivityRequest createActivityRequest) {
         return toActivityResponse(activityRepository.insert(Activity.builder()
+                .trip_id(createActivityRequest.getTrip_id())
                 .day_id(createActivityRequest.getDay_id())
                 .checked(createActivityRequest.isChecked())
                 .name(createActivityRequest.getName())
@@ -35,9 +36,18 @@ public class ActivityService {
         return toActivityResponse(activityRepository.deleteById(activityIdNumber));
     }
 
+    public List<ActivityResponse> deleteActsByDayId(String dayIdNumber) {
+        return toListActivityResponse(activityRepository.deleteActsByDayId(dayIdNumber));
+    }
+
+    public List<ActivityResponse> deleteActsByTripId(String tripIdNumber) {
+        return toListActivityResponse(activityRepository.deleteActsByTripId(tripIdNumber));
+    }
+
     public ActivityResponse updateActivity(String activityIdNumber, UpdateActivityRequest updateActivityRequest) {
         return toActivityResponse(activityRepository.save(Activity.builder()
                 ._id(activityIdNumber)
+                .trip_id(updateActivityRequest.getTrip_id())
                 .day_id(updateActivityRequest.getDay_id())
                 .checked(updateActivityRequest.isChecked())
                 .name(updateActivityRequest.getName())
@@ -48,6 +58,7 @@ public class ActivityService {
     private ActivityResponse toActivityResponse(Activity activity) {
         return ActivityResponse.builder()
                 ._id(activity.get_id())
+                .trip_id(activity.getTrip_id().toString())
                 .day_id(activity.getDay_id().toString())
                 .checked(activity.isChecked())
                 .name(activity.getName())

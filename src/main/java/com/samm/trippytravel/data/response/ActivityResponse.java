@@ -17,6 +17,9 @@ public class ActivityResponse {
     private final String _id;
 
     @NotBlank
+    private final String trip_id;
+
+    @NotBlank
     private final String day_id;
 
     @NotNull

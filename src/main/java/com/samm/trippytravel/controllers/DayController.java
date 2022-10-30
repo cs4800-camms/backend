@@ -48,7 +48,7 @@ public class DayController {
         return new ResponseEntity<>(dayService.deleteDay(dayIdNumber), HttpStatus.OK);
     }
 
-    @DeleteMapping("{tripIdNumber/delete-all}")
+    @DeleteMapping("{tripIdNumber}/delete-by-trip")
     @ResponseBody
     public ResponseEntity<List<DayResponse>> deleteDaysByTripId(
             @PathVariable("tripIdNumber") String tripIdNumber) {

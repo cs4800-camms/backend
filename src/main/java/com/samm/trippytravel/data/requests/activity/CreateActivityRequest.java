@@ -14,6 +14,10 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 public class CreateActivityRequest {
     @NotBlank
+    @JsonProperty("trip_id")
+    private final ObjectId trip_id;
+
+    @NotBlank
     @JsonProperty("day_id")
     private final ObjectId day_id;
 

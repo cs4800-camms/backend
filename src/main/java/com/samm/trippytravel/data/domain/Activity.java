@@ -12,6 +12,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Activity {
     @Id
     String _id;
+    ObjectId trip_id;
     ObjectId day_id;
     boolean checked;
     String name;
@@ -19,6 +20,7 @@ public class Activity {
 
     public Activity getActivity(Activity activity) {
         return Activity.builder()
+                .trip_id(activity.getTrip_id())
                 .day_id(activity.getDay_id())
                 .checked(activity.isChecked())
                 .name(activity.getName())

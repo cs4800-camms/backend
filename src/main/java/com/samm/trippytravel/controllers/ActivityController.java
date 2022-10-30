@@ -48,6 +48,19 @@ public class ActivityController {
         return new ResponseEntity<>(activityService.deleteActivity(activityIdNumber), HttpStatus.OK);
     }
 
+    @DeleteMapping("{dayIdNumber}/delete-by-day")
+    @ResponseBody
+    public ResponseEntity<List<ActivityResponse>> deleteActsByDayId(
+            @PathVariable("dayIdNumber") String dayIdNumber) {
+        return new ResponseEntity<>(activityService.deleteActsByDayId(dayIdNumber), HttpStatus.OK);
+    }
+
+    @DeleteMapping("{tripIdNumber}/delete-by-trip")
+    public ResponseEntity<List<ActivityResponse>> deleteActsByTripId(
+            @PathVariable("tripIdNumber") String tripIdNumber) {
+        return new ResponseEntity<>(activityService.deleteActsByTripId(tripIdNumber), HttpStatus.OK);
+    }
+
     @PostMapping("{activityIdNumber}/update")
     @ResponseBody
     public ResponseEntity<ActivityResponse> updateActivity(
