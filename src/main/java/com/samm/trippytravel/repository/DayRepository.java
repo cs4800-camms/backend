@@ -14,4 +14,7 @@ public interface DayRepository extends MongoRepository<Day, Long> {
 
     @Query(value="{'_id' : ?0}", delete = true)
     Day deleteById(String id);
+
+    @Query(value="{'trip_id' : ObjectId( ?0 )}", delete = true)
+    List<Day> deleteDaysByTripId(String tripId);
 }

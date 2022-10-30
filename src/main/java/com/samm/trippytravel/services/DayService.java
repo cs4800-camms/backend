@@ -34,6 +34,10 @@ public class DayService {
         return toDayResponse(dayRepository.deleteById(dayIdNumber));
     }
 
+    public List<DayResponse> deleteDaysByTripId(String tripIdNumber) {
+        return toListDayResponse(dayRepository.deleteDaysByTripId(tripIdNumber));
+    }
+
     public DayResponse updateDay(String dayIdNumber, UpdateDayRequest updateDayRequest) {
         return toDayResponse(dayRepository.save(Day.builder()
                 ._id(dayIdNumber)
