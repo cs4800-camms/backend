@@ -1,8 +1,8 @@
 package com.samm.trippytravel.services;
 
 import com.samm.trippytravel.data.domain.Trip;
-import com.samm.trippytravel.data.requests.CreateTripRequest;
-import com.samm.trippytravel.data.requests.UpdateTripRequest;
+import com.samm.trippytravel.data.requests.trip.CreateTripRequest;
+import com.samm.trippytravel.data.requests.trip.UpdateTripRequest;
 import com.samm.trippytravel.repository.TripRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
