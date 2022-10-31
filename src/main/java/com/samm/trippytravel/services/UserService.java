@@ -33,6 +33,10 @@ public class UserService {
                 .build()));
     }
 
+    public UserResponse deleteUser(String userIdNumber) {
+        return toUserResponse(userRepository.deleteById(userIdNumber));
+    }
+
     private UserResponse toUserResponse(User user) {
         return UserResponse.builder()
                 ._id(user.get_id())
