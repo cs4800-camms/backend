@@ -32,6 +32,12 @@ public class TripController {
         return new ResponseEntity<>(tripService.getTrips(), HttpStatus.OK);
     }
 
+    @GetMapping("{tripIdNumber}")
+    public ResponseEntity<Trip> getTripById(
+            @PathVariable("tripIdNumber") String tripIdNumber) {
+        return new ResponseEntity<>(tripService.getTripById(tripIdNumber), HttpStatus.OK);
+    }
+
     @PostMapping("/create")
     @ResponseBody
     public ResponseEntity<Trip> createTrip(

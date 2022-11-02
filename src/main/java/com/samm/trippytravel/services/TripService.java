@@ -40,4 +40,8 @@ public class TripService {
     public List<Trip> getTrips() {
         return new ArrayList<>(tripRepository.findAll());
     }
+
+    public Trip getTripById(String tripIdNumber) {
+        return tripRepository.getTripById(tripIdNumber);
+    }
 }
