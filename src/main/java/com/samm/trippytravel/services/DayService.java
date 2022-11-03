@@ -21,7 +21,6 @@ public class DayService {
     public DayResponse addDay(CreateDayRequest createDayRequest) {
         return toDayResponse(dayRepository.insert(Day.builder()
                 .trip_id(createDayRequest.getTrip_id())
-                .name(createDayRequest.getName())
                 .date(createDayRequest.getDate())
                 .build()));
     }
@@ -42,7 +41,6 @@ public class DayService {
         return toDayResponse(dayRepository.save(Day.builder()
                 ._id(dayIdNumber)
                 .trip_id(updateDayRequest.getTrip_id())
-                .name(updateDayRequest.getName())
                 .date(updateDayRequest.getDate())
                 .build()));
     }
@@ -51,7 +49,6 @@ public class DayService {
         return DayResponse.builder()
                 ._id(day.get_id())
                 .trip_id(day.getTrip_id().toString())
-                .name(day.getName())
                 .date(day.getDate())
                 .build();
     }
