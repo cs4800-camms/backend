@@ -20,8 +20,5 @@ public class DayResponse {
     private final String trip_id;
 
     @NotBlank
-    private final String name;
-
-    @NotBlank
     private final Date date;
 }
