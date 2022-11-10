@@ -1,8 +1,8 @@
 package com.samm.trippytravel.controllers;
 
 import com.samm.trippytravel.data.domain.Trip;
-import com.samm.trippytravel.data.requests.CreateTripRequest;
-import com.samm.trippytravel.data.requests.UpdateTripRequest;
+import com.samm.trippytravel.data.requests.trip.CreateTripRequest;
+import com.samm.trippytravel.data.requests.trip.UpdateTripRequest;
 import com.samm.trippytravel.repository.TripRepository;
 import com.samm.trippytravel.services.TripService;
 import lombok.RequiredArgsConstructor;
@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -32,6 +33,12 @@ public class TripController {
         return new ResponseEntity<>(tripService.getTrips(), HttpStatus.OK);
     }
 
+    @GetMapping("{tripIdNumber}")
+    public ResponseEntity<Trip> getTripById(
+            @PathVariable("tripIdNumber") String tripIdNumber) {
+        return new ResponseEntity<>(tripService.getTripById(tripIdNumber), HttpStatus.OK);
+    }
+
     @PostMapping("/create")
     @ResponseBody
     public ResponseEntity<Trip> createTrip(
@@ -39,7 +46,7 @@ public class TripController {
         return new ResponseEntity<>(tripService.addTrip(createTripRequest), HttpStatus.OK);
     }
 
-    @PostMapping("{tripIdNumber}/update")
+    @PutMapping("{tripIdNumber}/update")
     @ResponseBody
     public ResponseEntity<Trip> updateTrip(
             @PathVariable("tripIdNumber") String tripIdNumber,
