@@ -3,6 +3,7 @@ package com.samm.trippytravel.repo;
 import com.samm.trippytravel.data.domain.Trip;
 import com.samm.trippytravel.repository.TripRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.bson.types.ObjectId;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -28,7 +29,7 @@ public class TripRepositoryTest {
     private Trip trip;
 
     private final String ID ="abcdefg";
-    private final long USER_ID = 1;
+    private final ObjectId USER_ID = new ObjectId("1");
     private final String NAME = "Family Trip";
     private final String DESTINATION = "Tokyo, Japan";
     private final Date START = new Date(2022, Calendar.NOVEMBER, 21);
@@ -38,7 +39,7 @@ public class TripRepositoryTest {
     void setUp() {
         this.trip = Trip.builder()
                 ._id(ID)
-                .userId(USER_ID)
+                .user_id(USER_ID)
                 .name(NAME)
                 .destination(DESTINATION)
                 .startDate(START)
@@ -47,7 +48,7 @@ public class TripRepositoryTest {
 
         when(tripRepository.insert(trip)).thenReturn(Trip.builder()
                 ._id(ID)
-                .userId(USER_ID)
+                .user_id(USER_ID)
                 .name(NAME)
                 .destination(DESTINATION)
                 .startDate(START)
@@ -66,7 +67,7 @@ public class TripRepositoryTest {
     void isTripDeleted() {
         when(this.tripRepository.deleteById(ID)).thenReturn(Trip.builder()
                 ._id(ID)
-                .userId(USER_ID)
+                .user_id(USER_ID)
                 .name(NAME)
                 .destination(DESTINATION)
                 .startDate(START)
