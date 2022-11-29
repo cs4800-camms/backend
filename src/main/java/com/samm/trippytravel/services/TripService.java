@@ -18,7 +18,7 @@ public class TripService {
 
     public Trip addTrip(CreateTripRequest createTripRequest) {
         return tripRepository.insert(Trip.builder()
-                .userId(createTripRequest.getUserId())
+                .user_id(createTripRequest.getUserId())
                 .name(createTripRequest.getName())
                 .destination(createTripRequest.getDestination())
                 .startDate(createTripRequest.getStartDate())
@@ -29,7 +29,7 @@ public class TripService {
     public Trip updateTrip(String idNumber, UpdateTripRequest updateTripRequest) {
         return tripRepository.save(Trip.builder()
                 ._id(idNumber)
-                .userId(updateTripRequest.getUserId())
+                .user_id(updateTripRequest.getUserId())
                 .name(updateTripRequest.getName())
                 .destination(updateTripRequest.getDestination())
                 .startDate(updateTripRequest.getStartDate())
