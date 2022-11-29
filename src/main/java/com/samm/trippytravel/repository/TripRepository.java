@@ -12,6 +12,9 @@ public interface TripRepository extends MongoRepository<Trip, Long> {
     @Query(value="{'_id' : ?0}", delete = true)
     Trip deleteById(String id);
 
+    @Query(value="{ 'user_id' : ObjectId( ?0 )}")
+    List<Trip> getTripsByUserId(String userId);
+
     @Query(value="{'_id' : ?0}")
     Trip getTripById(String tripId);
 }

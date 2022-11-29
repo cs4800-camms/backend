@@ -1,4 +1,4 @@
-package com.samm.trippytravel.data.requests.trip;
+package com.samm.trippytravel.payload.request.trip;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
@@ -11,7 +11,7 @@ import java.util.Date;
 @Builder
 @Getter
 @AllArgsConstructor
-public class CreateTripRequest {
+public class UpdateTripRequest {
     @NotBlank
     @JsonProperty("userId")
     private final long userId;

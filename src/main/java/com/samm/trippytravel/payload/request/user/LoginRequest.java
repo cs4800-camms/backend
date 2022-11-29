@@ -1,4 +1,4 @@
-package com.samm.trippytravel.data.requests.user;
+package com.samm.trippytravel.payload.request.user;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
@@ -10,18 +10,10 @@ import javax.validation.constraints.NotBlank;
 @Builder
 @Getter
 @AllArgsConstructor
-public class CreateUserRequest {
+public class LoginRequest {
     @NotBlank
-    @JsonProperty("firstName")
-    private final String firstName;
-
-    @NotBlank
-    @JsonProperty("lastName")
-    private final String lastName;
-
-    @NotBlank
-    @JsonProperty("email")
-    private final String email;
+    @JsonProperty("username")
+    private final String username;
 
     @NotBlank
     @JsonProperty("password")

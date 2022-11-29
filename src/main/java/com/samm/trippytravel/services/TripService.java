@@ -1,8 +1,8 @@
 package com.samm.trippytravel.services;
 
 import com.samm.trippytravel.data.domain.Trip;
-import com.samm.trippytravel.data.requests.trip.CreateTripRequest;
-import com.samm.trippytravel.data.requests.trip.UpdateTripRequest;
+import com.samm.trippytravel.payload.request.trip.CreateTripRequest;
+import com.samm.trippytravel.payload.request.trip.UpdateTripRequest;
 import com.samm.trippytravel.repository.TripRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +39,10 @@ public class TripService {
 
     public List<Trip> getTrips() {
         return new ArrayList<>(tripRepository.findAll());
+    }
+
+    public List<Trip> getTripsByUserId(String userIdNumber) {
+        return new ArrayList<>(tripRepository.getTripsByUserId(userIdNumber));
     }
 
     public Trip getTripById(String tripIdNumber) {

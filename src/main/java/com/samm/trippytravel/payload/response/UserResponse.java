@@ -1,4 +1,4 @@
-package com.samm.trippytravel.data.response;
+package com.samm.trippytravel.payload.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -6,28 +6,24 @@ import lombok.Getter;
 import org.springframework.data.annotation.Id;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
 @Builder
 @Getter
 @AllArgsConstructor
-public class ActivityResponse {
+public class UserResponse {
     @Id
     @NotBlank
     private final String _id;
 
     @NotBlank
-    private final String trip_id;
+    private final String firstName;
 
     @NotBlank
-    private final String day_id;
-
-    @NotNull
-    private final boolean checked;
+    private final String lastName;
 
     @NotBlank
-    private final String name;
+    private final String email;
 
     @NotBlank
-    private final String location;
+    private final String password;
 }
