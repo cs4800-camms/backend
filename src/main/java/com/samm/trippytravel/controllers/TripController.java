@@ -3,7 +3,6 @@ package com.samm.trippytravel.controllers;
 import com.samm.trippytravel.data.domain.Trip;
 import com.samm.trippytravel.payload.request.trip.CreateTripRequest;
 import com.samm.trippytravel.payload.request.trip.UpdateTripRequest;
-import com.samm.trippytravel.payload.response.DayResponse;
 import com.samm.trippytravel.repository.TripRepository;
 import com.samm.trippytravel.services.TripService;
 import lombok.RequiredArgsConstructor;
@@ -46,7 +45,7 @@ public class TripController {
         return new ResponseEntity<>(tripService.getTripsByUserId(userIdNumber), HttpStatus.OK);
     }
 
-    @GetMapping("{tripIdNumber}")
+    @GetMapping("get-trip/{tripIdNumber}")
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<Trip> getTripById(
             @PathVariable("tripIdNumber") String tripIdNumber) {

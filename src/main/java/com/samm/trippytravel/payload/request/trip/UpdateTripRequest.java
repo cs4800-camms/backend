@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import org.bson.types.ObjectId;
 
 import javax.validation.constraints.NotBlank;
 import java.util.Date;
@@ -13,8 +14,8 @@ import java.util.Date;
 @AllArgsConstructor
 public class UpdateTripRequest {
     @NotBlank
-    @JsonProperty("userId")
-    private final long userId;
+    @JsonProperty("user_id")
+    private final ObjectId user_id;
 
     @NotBlank
     @JsonProperty("name")
