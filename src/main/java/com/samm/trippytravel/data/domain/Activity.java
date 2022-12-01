@@ -16,7 +16,6 @@ public class Activity {
     ObjectId day_id;
     boolean checked;
     String name;
-    String location;
 
     public Activity getActivity(Activity activity) {
         return Activity.builder()
@@ -24,7 +23,6 @@ public class Activity {
                 .day_id(activity.getDay_id())
                 .checked(activity.isChecked())
                 .name(activity.getName())
-                .location(activity.getLocation())
                 .build();
     }
 }

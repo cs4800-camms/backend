@@ -1,4 +1,4 @@
-package com.samm.trippytravel.data.requests.activity;
+package com.samm.trippytravel.payload.request.activity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
@@ -28,8 +28,4 @@ public class UpdateActivityRequest {
     @NotBlank
     @JsonProperty("name")
     private final String name;
-
-    @NotBlank
-    @JsonProperty("location")
-    private final String location;
 }
