@@ -1,9 +1,9 @@
 package com.samm.trippytravel.services;
 
 import com.samm.trippytravel.data.domain.Day;
-import com.samm.trippytravel.data.requests.day.CreateDayRequest;
-import com.samm.trippytravel.data.requests.day.UpdateDayRequest;
-import com.samm.trippytravel.data.response.DayResponse;
+import com.samm.trippytravel.payload.request.day.CreateDayRequest;
+import com.samm.trippytravel.payload.request.day.UpdateDayRequest;
+import com.samm.trippytravel.payload.response.DayResponse;
 import com.samm.trippytravel.repository.DayRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

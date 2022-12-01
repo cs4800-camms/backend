@@ -1,4 +1,4 @@
-package com.samm.trippytravel.data.requests.day;
+package com.samm.trippytravel.payload.request.day;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
