@@ -28,8 +28,4 @@ public class CreateActivityRequest {
     @NotBlank
     @JsonProperty("name")
     private final String name;
-
-    @NotBlank
-    @JsonProperty("location")
-    private final String location;
 }

@@ -27,7 +27,4 @@ public class ActivityResponse {
 
     @NotBlank
     private final String name;
-
-    @NotBlank
-    private final String location;
 }
