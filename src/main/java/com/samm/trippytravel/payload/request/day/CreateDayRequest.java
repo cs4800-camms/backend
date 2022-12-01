@@ -1,4 +1,4 @@
-package com.samm.trippytravel.data.requests.activity;
+package com.samm.trippytravel.payload.request.day;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
@@ -7,29 +7,21 @@ import lombok.Getter;
 import org.bson.types.ObjectId;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 @Builder
 @Getter
 @AllArgsConstructor
-public class UpdateActivityRequest {
+public class CreateDayRequest {
     @NotBlank
     @JsonProperty("trip_id")
     private final ObjectId trip_id;
-
-    @NotBlank
-    @JsonProperty("day_id")
-    private final ObjectId day_id;
-
-    @NotNull
-    @JsonProperty("checked")
-    private final boolean checked;
 
     @NotBlank
     @JsonProperty("name")
     private final String name;
 
     @NotBlank
-    @JsonProperty("location")
-    private final String location;
+    @JsonProperty("date")
+    private final Date date;
 }

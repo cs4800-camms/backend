@@ -1,4 +1,4 @@
-package com.samm.trippytravel.data.requests.activity;
+package com.samm.trippytravel.payload.request.activity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
@@ -12,7 +12,7 @@ import javax.validation.constraints.NotNull;
 @Builder
 @Getter
 @AllArgsConstructor
-public class CreateActivityRequest {
+public class UpdateActivityRequest {
     @NotBlank
     @JsonProperty("trip_id")
     private final ObjectId trip_id;
@@ -28,8 +28,4 @@ public class CreateActivityRequest {
     @NotBlank
     @JsonProperty("name")
     private final String name;
-
-    @NotBlank
-    @JsonProperty("location")
-    private final String location;
 }

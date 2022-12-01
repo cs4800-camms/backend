@@ -1,4 +1,4 @@
-package com.samm.trippytravel.data.requests.day;
+package com.samm.trippytravel.payload.request.trip;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
@@ -12,16 +12,24 @@ import java.util.Date;
 @Builder
 @Getter
 @AllArgsConstructor
-public class UpdateDayRequest {
+public class CreateTripRequest {
     @NotBlank
-    @JsonProperty("trip_id")
-    private final ObjectId trip_id;
+    @JsonProperty("user_id")
+    private final ObjectId user_id;
 
     @NotBlank
     @JsonProperty("name")
     private final String name;
 
     @NotBlank
-    @JsonProperty("date")
-    private final Date date;
+    @JsonProperty("destination")
+    private final String destination;
+
+    @NotBlank
+    @JsonProperty("startDate")
+    private final Date startDate;
+
+    @NotBlank
+    @JsonProperty("endDate")
+    private final Date endDate;
 }

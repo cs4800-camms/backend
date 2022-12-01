@@ -1,9 +1,9 @@
 package com.samm.trippytravel.services;
 
 import com.samm.trippytravel.data.domain.Activity;
-import com.samm.trippytravel.data.requests.activity.CreateActivityRequest;
-import com.samm.trippytravel.data.requests.activity.UpdateActivityRequest;
-import com.samm.trippytravel.data.response.ActivityResponse;
+import com.samm.trippytravel.payload.request.activity.CreateActivityRequest;
+import com.samm.trippytravel.payload.request.activity.UpdateActivityRequest;
+import com.samm.trippytravel.payload.response.ActivityResponse;
 import com.samm.trippytravel.repository.ActivityRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,6 @@ public class ActivityService {
                 .day_id(createActivityRequest.getDay_id())
                 .checked(createActivityRequest.isChecked())
                 .name(createActivityRequest.getName())
-                .location(createActivityRequest.getLocation())
                 .build()));
     }
 
@@ -51,7 +50,6 @@ public class ActivityService {
                 .day_id(updateActivityRequest.getDay_id())
                 .checked(updateActivityRequest.isChecked())
                 .name(updateActivityRequest.getName())
-                .location(updateActivityRequest.getLocation())
                 .build()));
     }
 
@@ -62,7 +60,6 @@ public class ActivityService {
                 .day_id(activity.getDay_id().toString())
                 .checked(activity.isChecked())
                 .name(activity.getName())
-                .location(activity.getLocation())
                 .build();
     }
 
