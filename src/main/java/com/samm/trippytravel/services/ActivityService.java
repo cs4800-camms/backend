@@ -44,12 +44,14 @@ public class ActivityService {
     }
 
     public ActivityResponse updateActivity(String activityIdNumber, UpdateActivityRequest updateActivityRequest) {
+        Activity currentActivity = activityRepository.getActivity(activityIdNumber);
+
         return toActivityResponse(activityRepository.save(Activity.builder()
                 ._id(activityIdNumber)
-                .trip_id(updateActivityRequest.getTrip_id())
-                .day_id(updateActivityRequest.getDay_id())
+                .trip_id(currentActivity.getTrip_id())
+                .day_id(currentActivity.getDay_id())
                 .checked(updateActivityRequest.isChecked())
-                .name(updateActivityRequest.getName())
+                .name(currentActivity.getName())
                 .build()));
     }
 
