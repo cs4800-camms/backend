@@ -15,6 +15,9 @@ public interface ActivityRepository extends MongoRepository<Activity, Long> {
     @Query(value="{'_id' : ?0}", delete = true)
     Activity deleteById(String id);
 
+    @Query(value="{'_id' : ?0}")
+    Activity getActivity(String id);
+
     @Query(value="{'day_id' : ObjectId( ?0 )}", delete = true)
     List<Activity> deleteActsByDayId(String dayId);
 
