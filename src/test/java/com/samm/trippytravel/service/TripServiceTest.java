@@ -42,7 +42,7 @@ public class TripServiceTest {
     void setUp() {
         this.tripService = new TripService(this.tripRepository);
         this.createTripRequest = CreateTripRequest.builder()
-                .userId(new ObjectId("3"))
+                .user_id(new ObjectId("3"))
                 .name("Mary")
                 .destination("Rome")
                 .startDate(START)
@@ -57,7 +57,7 @@ public class TripServiceTest {
                 .endDate(END)
                 .build();
         this.updateTripRequest = UpdateTripRequest.builder()
-                .userId(new ObjectId("4"))
+                .user_id(new ObjectId("4"))
                 .name("Mel T.")
                 .destination("Taipei")
                 .startDate(START)
@@ -88,7 +88,7 @@ public class TripServiceTest {
 
         log.info("addedTrip: " + addedTrip.toString());
         verify(tripRepository).insert(addedTrip);
-        assertThat(createTripRequest.getUserId()).isEqualTo(addedTrip.getUser_id());
+        assertThat(createTripRequest.getUser_id()).isEqualTo(addedTrip.getUser_id());
         assertThat(createTripRequest.getDestination()).isEqualTo(addedTrip.getDestination());
         assertThat(createTripRequest.getName()).isEqualTo(addedTrip.getName());
         assertThat(createTripRequest.getStartDate()).isEqualTo(addedTrip.getStartDate());
